@@ -1,0 +1,313 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "一起约跑吧 API",
+        "description": "全民健身 一起约跑",
+        "version": "1.0.0",
+        "contact": {}
+    },
+    "basePath": "/v1",
+    "paths": {
+        "/common/getcode": {
+            "get": {
+                "tags": [
+                    "common"
+                ],
+                "description": "获取验证码",
+                "operationId": "CommonController.",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "phone",
+                        "description": "手机号码",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {},
+                    "403": {}
+                }
+            }
+        },
+        "/common/is_registed": {
+            "get": {
+                "tags": [
+                    "common"
+                ],
+                "description": "判断手机号是否注册",
+                "operationId": "CommonController.",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "phone",
+                        "description": "手机号码",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {},
+                    "403": {}
+                }
+            }
+        },
+        "/common/upload": {
+            "post": {
+                "tags": [
+                    "common"
+                ],
+                "description": "上传头像接口",
+                "operationId": "CommonController.上传头像",
+                "parameters": [
+                    {
+                        "in": "formData",
+                        "name": "head_file",
+                        "description": "图片",
+                        "required": true,
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "200": {},
+                    "403": {}
+                }
+            }
+        },
+        "/user/code_login": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "description": "验证码登录",
+                "operationId": "UserController.",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "phone",
+                        "description": "手机号码",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "code",
+                        "description": "验证码",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {},
+                    "403": {}
+                }
+            }
+        },
+        "/user/getNear": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "description": "获取周变跑友",
+                "operationId": "UserController.",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "id",
+                        "description": "用户id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {},
+                    "403": {}
+                }
+            }
+        },
+        "/user/info": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "description": "获取个人信息",
+                "operationId": "UserController.",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "user_id",
+                        "description": "用户id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {},
+                    "403": {}
+                }
+            }
+        },
+        "/user/login": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "description": "登录",
+                "operationId": "UserController.",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "phone",
+                        "description": "手机号码",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "password",
+                        "description": "密码",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {},
+                    "403": {}
+                }
+            }
+        },
+        "/user/regist": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "description": "注册",
+                "operationId": "UserController.注册",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "phone",
+                        "description": "手机号码",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "password",
+                        "description": "密码",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "code",
+                        "description": "验证码",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{int} models.User.Id"
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/user/update_info": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "description": "获取个人信息",
+                "operationId": "UserController.",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "user_id",
+                        "description": "用户id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sex",
+                        "description": "性别 0-未设置 1-男 2-女",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sign",
+                        "description": "个性签名",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "home_town",
+                        "description": "故乡",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "now_live",
+                        "description": "现居地",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "school",
+                        "description": "毕业学校",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "birth",
+                        "description": "生日（秒）",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "query",
+                        "name": "profession",
+                        "description": "职业",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "email",
+                        "description": "email",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {},
+                    "403": {}
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "user",
+            "description": "用户\n"
+        },
+        {
+            "name": "common",
+            "description": "公共\n"
+        }
+    ]
+}

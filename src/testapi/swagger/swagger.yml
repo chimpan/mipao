@@ -1,0 +1,186 @@
+swagger: "2.0"
+info:
+  title: beego cyp的测试 API
+  description: 第一次写api接口&文档，有点小激动
+  version: 1.0.0
+basePath: /v1
+paths:
+  /news/all:
+    get:
+      tags:
+      - news
+      description: 所有动态接口
+      operationId: NewsController.所有动态
+      responses:
+        "200": {}
+        "403": {}
+  /news/commend:
+    post:
+      tags:
+      - news
+      description: 评论接口
+      operationId: NewsController.评论
+      parameters:
+      - in: query
+        name: userid
+        description: 用户id
+        required: true
+        type: integer
+        format: int64
+      - in: query
+        name: newsid
+        description: 动态id
+        required: true
+        type: integer
+        format: int64
+      - in: query
+        name: content
+        description: 评论内容
+        required: true
+        type: string
+      responses:
+        "200": {}
+        "403": {}
+  /news/publish:
+    post:
+      tags:
+      - news
+      description: 发布动态接口
+      operationId: NewsController.发布动态
+      parameters:
+      - in: query
+        name: userid
+        description: 用户id
+        required: true
+        type: integer
+        format: int64
+      - in: query
+        name: image
+        description: 图片
+        type: string
+      - in: query
+        name: content
+        description: 发布内容
+        required: true
+        type: string
+      responses:
+        "200": {}
+        "403": {}
+  /user/login:
+    post:
+      tags:
+      - user
+      description: 登录接口
+      operationId: UserController.登录
+      parameters:
+      - in: query
+        name: username
+        description: 用户名
+        required: true
+        type: string
+      - in: query
+        name: password
+        description: 密码
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} login success'
+        "403":
+          description: user not exist
+  /user/regist:
+    post:
+      tags:
+      - user
+      description: 注册接口
+      operationId: UserController.注册
+      parameters:
+      - in: query
+        name: username
+        description: 用户名
+        required: true
+        type: string
+      - in: query
+        name: password
+        description: 密码
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} login success'
+        "403":
+          description: user not exist
+  /userinfo/info:
+    get:
+      tags:
+      - userinfo
+      description: 个人信息接口
+      operationId: UserInfoController.个人信息
+      parameters:
+      - in: query
+        name: userid
+        description: 用户id
+        required: true
+        type: string
+      responses:
+        "200": {}
+        "403": {}
+  /userinfo/update:
+    post:
+      tags:
+      - userinfo
+      description: 修改个人信息接口
+      operationId: UserInfoController.修改个人信息
+      parameters:
+      - in: query
+        name: userid
+        description: 用户id
+        required: true
+        type: integer
+        format: int64
+      - in: query
+        name: head_url
+        description: 头像地址
+        type: string
+      - in: query
+        name: sex
+        description: 性别
+        type: integer
+        format: int64
+      - in: query
+        name: birth
+        description: 生日
+        type: string
+      - in: query
+        name: sign
+        description: 签名
+        type: string
+      - in: query
+        name: nick
+        description: 昵称
+        type: string
+      responses:
+        "200": {}
+        "403": {}
+  /userinfo/upload:
+    post:
+      tags:
+      - userinfo
+      description: 上传头像接口
+      operationId: UserInfoController.上传头像
+      parameters:
+      - in: formData
+        name: head_file
+        description: 图片
+        required: true
+        type: file
+      responses:
+        "200": {}
+        "403": {}
+tags:
+- name: user
+  description: |
+    用户模块接口
+- name: news
+  description: |
+    动态
